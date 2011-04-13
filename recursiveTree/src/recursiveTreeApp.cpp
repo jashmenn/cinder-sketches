@@ -27,7 +27,8 @@ class recursiveTreeApp : public AppBasic {
     float mBranchRotationMax;
     float mProbBranch;
     float mScaleReduction;
-
+    float mBranchRotationMin2;
+    float mBranchRotationMax2;
 };
 
 void recursiveTreeApp::setup()
@@ -46,6 +47,8 @@ void recursiveTreeApp::setup()
   mBranchRotationMax = 11.0f;
   mProbBranch = 0.7f;
   mScaleReduction = 0.7f;
+  mBranchRotationMin2 = 10.0f;
+  mBranchRotationMax2 = 20.0f;
 
   // Setup the parameters
   mParams = params::InterfaceGl( "Parameters", Vec2i( 200, 400 ) );
@@ -57,14 +60,14 @@ void recursiveTreeApp::setup()
   mParams.addParam( "Branch Rotation (max)", &mBranchRotationMax, "min=-360 max=360 step=1" );
   mParams.addParam( "Prob Branch", &mProbBranch, "min=0.0 max=1.0 step=0.05" );
   mParams.addParam( "Scale Reduction", &mScaleReduction, "min=0.0 max=1.0 step=0.05" );
+  mParams.addParam( "Branch Rotation 2 (min)", &mBranchRotationMin2, "min=-360 max=360 step=1" );
+  mParams.addParam( "Branch Rotation 2 (max)", &mBranchRotationMax2, "min=-360 max=360 step=1" );
 }
 
 void recursiveTreeApp::mouseDown( MouseEvent event )
 {
   printf("mouseDown\n");
   mReset = 0;
-//  nextTarget = Vec2f(event.getPos().x, getWindowHeight() - event.getPos().y);
-
 }
 
 void recursiveTreeApp::update()
@@ -73,46 +76,42 @@ void recursiveTreeApp::update()
 
 void recursiveTreeApp::draw()
 {
-  // gl::color( ColorA( 1.0f, 1.0f, 1.0f, 0.01f ) ); 
-  // gl::drawSolidRect( getWindowBounds() );
-
   if(mReset == 0) {
+    gl::color( ColorA( 1.0f, 1.0f, 1.0f, 0.5f ) ); 
+    gl::drawSolidRect( getWindowBounds() );
+
     gl::pushMatrices();
     gl::translate( Vec2f( getWindowWidth()/2, getWindowHeight() ) );
-    gl::clear( Color( 1.0f, 1.0f, 1.0f ) );
     gl::rotate(Rand::randFloat(-3, 3)); 
     branch(0, mStartingWidth);
     gl::popMatrices();
     mReset = 1;
   }
-	
-  params::InterfaceGl::draw();
 
+  params::InterfaceGl::draw();
 }
 
 void recursiveTreeApp::branch(int depth, float width) 
 {
   gl::color( Color( 0.1f, 0.1f, 0.1f ) );
   glLineWidth( width );
-  // printf("depth: %d width:%f\n", depth, width);
 
   if (depth < mMaxDepth) {
-
     float segmentLength = Rand::randFloat(mSegmentLengthMin, mSegmentLengthMax);
     gl::drawLine( Vec2f(0, 0), Vec2f(0, -getWindowHeight()/segmentLength) );
     gl::translate(Vec2f(0, -getWindowHeight()/segmentLength));
     gl::rotate(Rand::randFloat(mBranchRotationMin, mBranchRotationMax)); 
 
     if (Rand::randFloat(1.0) < mProbBranch) { // branching
-      gl::rotate(toDegrees(0.3)); 
-      gl::scale(Vec3f( mScaleReduction, mScaleReduction, mScaleReduction ));
-
       gl::pushMatrices();
+      gl::rotate(Rand::randFloat(mBranchRotationMin2, mBranchRotationMax2)); 
+      gl::scale(Vec3f( mScaleReduction, mScaleReduction, mScaleReduction ));
       branch(depth + 1, width*mScaleReduction) ;
       gl::popMatrices();
 
-      gl::rotate(toDegrees(-0.6)); 
       gl::pushMatrices();
+      gl::rotate(-1*Rand::randFloat(mBranchRotationMin2, mBranchRotationMax2)); 
+      gl::scale(Vec3f( mScaleReduction, mScaleReduction, mScaleReduction ));
       branch(depth + 1, width*mScaleReduction) ;
       gl::popMatrices();
     } else { // continue
