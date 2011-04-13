@@ -12,7 +12,7 @@ class recursiveTreeApp : public AppBasic {
 	void mouseDown( MouseEvent event );	
 	void update();
 	void draw();
-	void branch( int depth );
+	void branch( int depth, float width );
 
     int mReset;
 };
@@ -47,18 +47,18 @@ void recursiveTreeApp::draw()
     gl::pushMatrices();
     gl::translate( Vec2f( getWindowWidth()/2, getWindowHeight() ) );
     // gl::clear( Color( 0.898f, 0.831f, 0.604f ) );
-    branch(0);
+    branch(0, 20.0);
     gl::popMatrices();
     mReset = 1;
   }
 }
 
-void recursiveTreeApp::branch(int depth) 
+void recursiveTreeApp::branch(int depth, float width) 
 {
-  printf("depth: %d\n", depth);
   gl::color( Color( 0.1f, 0.1f, 0.1f ) );
-  glLineWidth( 20.0f*(1.0f/depth) );
- 
+  glLineWidth( width );
+  printf("depth: %d width:%f\n", depth, width);
+
   if (depth < 10) {
     gl::drawLine( Vec2f(0, 0), Vec2f(0, -getWindowHeight()/3) );
 
@@ -67,7 +67,7 @@ void recursiveTreeApp::branch(int depth)
       gl::translate(Vec2f(0, -getWindowHeight()/5));
       gl::rotate(Rand::randFloat(-45.0, 45.0)); 
       gl::scale(Vec3f( 0.7f, 0.7f, 0.7f ));
-      branch(depth + 1);
+      branch(depth + 1, width * 0.7);
     }
     gl::popMatrices();
 
@@ -76,7 +76,7 @@ void recursiveTreeApp::branch(int depth)
       gl::translate(Vec2f(0, -getWindowHeight()/3));
       gl::rotate(Rand::randFloat(-45.0, 45.0)); 
       gl::scale(Vec3f( 0.7f, 0.7f, 0.7f ));
-      branch(depth + 1);
+      branch(depth + 1, width * 0.7);
     }
     gl::popMatrices();
 
