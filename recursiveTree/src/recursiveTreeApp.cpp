@@ -1,7 +1,9 @@
+#include "cinder/Cinder.h"
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
 #include "cinder/Rand.h"
 #include "cinder/params/Params.h"
+
 
 
 using namespace ci;
@@ -17,6 +19,9 @@ class recursiveTreeApp : public AppBasic {
 	void branch( int depth, float width );
 
     int mReset;
+    // keep track of time
+    double        mTime;
+	double        mLastDraw;
 	params::InterfaceGl		mParams;
 
     float mStartingWidth;
@@ -38,6 +43,8 @@ void recursiveTreeApp::setup()
   gl::clear( Color( 1.0, 1.0, 1.0) );
   glEnable(GL_LINE_SMOOTH);
   mReset = 0;
+  mTime = getElapsedSeconds();
+  mLastDraw = mTime;
 
   mStartingWidth = 11.0;
   mMaxDepth = 12;
@@ -72,6 +79,16 @@ void recursiveTreeApp::mouseDown( MouseEvent event )
 
 void recursiveTreeApp::update()
 {
+  // calculate elapsed time
+  //double elapsed = getElapsedSeconds() - mTime;
+  mTime = getElapsedSeconds();
+  // printf("elapsed: %f (%f)\n", mTime, round(mTime));
+  int t = 3;
+  if(((((int)round(mTime)) % t) == 0) && 
+      (mTime - mLastDraw > t)) {
+     mReset = 0;
+     mLastDraw = mTime;
+  }
 }
 
 void recursiveTreeApp::draw()
@@ -81,22 +98,33 @@ void recursiveTreeApp::draw()
     gl::drawSolidRect( getWindowBounds() );
 
     gl::pushMatrices();
-    gl::translate( Vec2f( getWindowWidth()/2, getWindowHeight() ) );
+    gl::translate( Vec2f( Rand::randFloat(getWindowWidth()), getWindowHeight() ) );
     gl::rotate(Rand::randFloat(-3, 3)); 
+    float newScale = Rand::randFloat(0.5,1);
+    gl::scale(Vec3f( newScale, newScale, newScale ));
     branch(0, mStartingWidth);
     gl::popMatrices();
     mReset = 1;
   }
 
-  params::InterfaceGl::draw();
+  // params::InterfaceGl::draw();
 }
 
 void recursiveTreeApp::branch(int depth, float width) 
 {
-  gl::color( Color( 0.1f, 0.1f, 0.1f ) );
-  glLineWidth( width );
-
   if (depth < mMaxDepth) {
+
+    if(depth < 4) {
+       gl::color( ColorA( 0.1f, 0.1f, 0.1f, 1.0f ) ); 
+    } else if (depth < 7) {
+       gl::color( ColorA( 0.1f, 0.1f, 0.1f, 0.8f ) ); 
+    } else if (depth < 9) {
+       gl::color( ColorA( 0.1f, 0.1f, 0.1f, 0.7f ) ); 
+    } else {
+       gl::color( ColorA( 0.1f, 0.1f, 0.1f, 0.5f ) ); 
+    }
+    glLineWidth( width );
+
     float segmentLength = Rand::randFloat(mSegmentLengthMin, mSegmentLengthMax);
     gl::drawLine( Vec2f(0, 0), Vec2f(0, -getWindowHeight()/segmentLength) );
     gl::translate(Vec2f(0, -getWindowHeight()/segmentLength));
@@ -122,4 +150,5 @@ void recursiveTreeApp::branch(int depth, float width)
 }
 
 CINDER_APP_BASIC( recursiveTreeApp, RendererGl )
+
 
