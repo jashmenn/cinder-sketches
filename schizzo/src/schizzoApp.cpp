@@ -43,11 +43,9 @@ void schizzoApp::setup()
 
 void schizzoApp::draw()
 {
-	// clear out the window with black
-	//gl::clear( Color( 0, 0, 0 ) ); 
-  // printf("%d\n", instructions.size());
-  if(el0 < instructions.size()) {
-    //printf("%d/%d\n", el0, instructions.size());
+  int t=0;
+  int atATime = 3; // how many to draw per draw() (def 5)
+  while((t++ < atATime) && (el0 < instructions.size())) {
     pen = instructions.draw(pen, el0);
     el0++;
   }
