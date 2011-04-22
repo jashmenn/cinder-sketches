@@ -10,7 +10,7 @@ class CLista {
     CLista();
     void add( int type, ci::Vec2f loc );
     void add( di_t instruction );
-    void draw(int frame);
+    ci::Vec2f draw(ci::Vec2f, int frame);
     int size();
 	std::vector<di_t> instructions;
 };

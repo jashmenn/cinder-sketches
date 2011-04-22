@@ -17,6 +17,7 @@ class schizzoApp : public AppBasic {
 
 	CLista instructions;
     int el0;
+    Vec2f pen;
 };
 
 void schizzoApp::setup()
@@ -34,7 +35,7 @@ void schizzoApp::setup()
   el0 = 0;
 
   for(int i=0; i<100; i++) {
-    di_t di = DIMakef(0, Rand::randFloat(getWindowWidth()), 
+    di_t di = DIMakef(1, Rand::randFloat(getWindowWidth()), 
                          Rand::randFloat(getWindowHeight())); 
     instructions.add(di); 
   }
@@ -46,8 +47,8 @@ void schizzoApp::draw()
 	//gl::clear( Color( 0, 0, 0 ) ); 
   // printf("%d\n", instructions.size());
   if(el0 < instructions.size()) {
-    printf("%d/%d\n", el0, instructions.size());
-    instructions.draw(el0);
+    //printf("%d/%d\n", el0, instructions.size());
+    pen = instructions.draw(pen, el0);
     el0++;
   }
 }

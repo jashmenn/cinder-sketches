@@ -18,3 +18,5 @@ inline DrawingInstruction DIMakef(int kind, float x, float y)
 {
     DrawingInstruction p; ci::Vec2f loc = ci::Vec2f( x, y ); p.kind = kind; p.loc = loc; return p;
 }
+
+enum instructions_t {DI_MOVE_TO, DI_LINE_TO, DI_RECT_TO};
