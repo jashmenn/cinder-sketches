@@ -18,7 +18,11 @@ void CLista::add(di_t instruction)
 
 void CLista::add(int type, Vec2f loc)
 {
-  di_t di = DIMake(type, loc);
+  int d = 3;  
+  float rnd1 = Rand::randFloat(-d,d); 
+  float rnd2 = Rand::randFloat(-d,d); 
+  Vec2f randomized = Vec2f( loc.x+rnd1, loc.x+rnd2 );
+  di_t di = DIMake(type, randomized);
   add(di);
 }
 
