@@ -7,6 +7,7 @@ struct DrawingInstruction {
   int kind;
   ci::Vec2f loc;
 };
+typedef DrawingInstruction di_t; 
 
 inline DrawingInstruction DIMake(int kind, ci::Vec2f loc)
 {
@@ -15,5 +16,5 @@ inline DrawingInstruction DIMake(int kind, ci::Vec2f loc)
 
 inline DrawingInstruction DIMakef(int kind, float x, float y)
 {
-    DrawingInstruction p; ci::Vec2f loc = ci::Vec2f( x, y); p.kind = kind; p.loc = loc; return p;
+    DrawingInstruction p; ci::Vec2f loc = ci::Vec2f( x, y ); p.kind = kind; p.loc = loc; return p;
 }

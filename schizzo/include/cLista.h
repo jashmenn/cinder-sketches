@@ -3,11 +3,15 @@
 #include "cinder/Vector.h"
 #include <list>
 #include <vector>
+#include "DrawingInstruction.h"
 
-class cLista {
+class CLista {
  public:
-    cLista();
-    void add( int type, Vec2f loc );
-    void draw();
+    CLista();
+    void add( int type, ci::Vec2f loc );
+    void add( di_t instruction );
+    void draw(int frame);
+    int size();
+	std::vector<di_t> instructions;
 };
 

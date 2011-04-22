@@ -2,27 +2,36 @@
 #include "cinder/Rand.h"
 #include "cinder/gl/gl.h"
 #include "cinder/app/AppBasic.h"
+#include "DrawingInstruction.h"
 
 using namespace ci;
 
-cLista::cLista()
+CLista::CLista()
 {
 }
 
-cLista::cLista( Vec2f loc )
+void CLista::add(di_t instruction)
 {
-	mLoc	= loc;
-	mDir	= Rand::randVec2f();
-	mVel	= Rand::randFloat( 5.0f );
-	mRadius	= 3.0f;
+  instructions.push_back(instruction);
 }
 
-void cLista::update()
+void CLista::add(int type, Vec2f loc)
 {
-	mLoc += mDir * mVel;
+  di_t di = DIMake(type, loc);
+  add(di);
 }
 
-void cLista::draw()
+void CLista::draw(int frame)
 {
-	gl::drawSolidCircle( mLoc, mRadius );
+  di_t i = instructions[frame]; 
+  switch(i.kind) {
+    case 0:
+      gl::drawLine( Vec2f(0, 0), i.loc);
+      break;
+  }
+}
+
+int CLista::size() 
+{
+   return instructions.size(); 
 }

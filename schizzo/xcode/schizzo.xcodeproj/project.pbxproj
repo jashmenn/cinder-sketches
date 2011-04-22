@@ -15,6 +15,7 @@
 		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
 		00BAE65A0E7ED9C10018A608 /* schizzoApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00BAE6590E7ED9C10018A608 /* schizzoApp.cpp */; };
 		00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 00CCAF14116A9FEE008396D5 /* CinderApp.icns */; };
+		43E65297136234DA004B998D /* cLista.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E65296136234DA004B998D /* cLista.cpp */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E3CDFB0E86099300238D2B /* Carbon.framework */; };
@@ -36,6 +37,8 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* schizzo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = schizzo_Prefix.pch; sourceTree = "<group>"; };
 		43E6528F1362340F004B998D /* DrawingInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingInstruction.h; path = ../include/DrawingInstruction.h; sourceTree = SOURCE_ROOT; };
+		43E65296136234DA004B998D /* cLista.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cLista.cpp; path = ../src/cLista.cpp; sourceTree = SOURCE_ROOT; };
+		43E65298136234F8004B998D /* cLista.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cLista.h; path = ../include/cLista.h; sourceTree = SOURCE_ROOT; };
 		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		5323E6B50EAFCA7E003A9687 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		53E3CDFB0E86099300238D2B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
@@ -68,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				00BAE6590E7ED9C10018A608 /* schizzoApp.cpp */,
+				43E65296136234DA004B998D /* cLista.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -122,6 +126,7 @@
 		29B97315FDCFA39411CA2CEA /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				43E65298136234F8004B998D /* cLista.h */,
 				32CA4F630368D1EE00C91783 /* schizzo_Prefix.pch */,
 				43E6528F1362340F004B998D /* DrawingInstruction.h */,
 			);
@@ -208,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00BAE65A0E7ED9C10018A608 /* schizzoApp.cpp in Sources */,
+				43E65297136234DA004B998D /* cLista.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
