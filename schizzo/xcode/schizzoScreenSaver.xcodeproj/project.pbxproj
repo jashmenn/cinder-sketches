@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00880A3711630C7F00F731D1 /* recursiveTreeScreenSaverApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00880A3611630C7F00F731D1 /* recursiveTreeScreenSaverApp.cpp */; };
 		00880A4111630CB400F731D1 /* AppScreenSaver.h in Headers */ = {isa = PBXBuildFile; fileRef = 00880A3F11630CB400F731D1 /* AppScreenSaver.h */; };
 		00880A4211630CB400F731D1 /* AppImplCocoaScreenSaver.h in Headers */ = {isa = PBXBuildFile; fileRef = 00880A4011630CB400F731D1 /* AppImplCocoaScreenSaver.h */; };
 		00880A4811630CDA00F731D1 /* AppImplCocoaScreenSaver.mm in Sources */ = {isa = PBXBuildFile; fileRef = 00880A4611630CDA00F731D1 /* AppImplCocoaScreenSaver.mm */; };
@@ -22,20 +21,21 @@
 		00880A6911630D7900F731D1 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00880A5D11630D7900F731D1 /* OpenGL.framework */; };
 		00C9A19111679DFE0086E7FD /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C9A19011679DFE0086E7FD /* QTKit.framework */; };
 		00C9A19F11679F0E0086E7FD /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C9A19E11679F0E0086E7FD /* QuickTime.framework */; };
-		00C9A1D61167C7810086E7FD /* AppImplCocoaRendererGl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 00C9A1D21167C7810086E7FD /* AppImplCocoaRendererGl.mm */; };
-		00C9A1D71167C7810086E7FD /* AppImplCocoaRendererQuartz.mm in Sources */ = {isa = PBXBuildFile; fileRef = 00C9A1D31167C7810086E7FD /* AppImplCocoaRendererQuartz.mm */; };
-		00C9A1D91167C7810086E7FD /* CinderView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 00C9A1D51167C7810086E7FD /* CinderView.mm */; };
 		00C9A1DD1167C7B50086E7FD /* AppImplCocoaRendererGl.h in Headers */ = {isa = PBXBuildFile; fileRef = 00C9A1DA1167C7B50086E7FD /* AppImplCocoaRendererGl.h */; };
-		00C9A1DE1167C7B50086E7FD /* AppImplCocoaRendererQuartz.h in Headers */ = {isa = PBXBuildFile; fileRef = 00C9A1DB1167C7B50086E7FD /* AppImplCocoaRendererQuartz.h */; };
 		00C9A1DF1167C7B50086E7FD /* CinderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 00C9A1DC1167C7B50086E7FD /* CinderView.h */; };
-		8D255AC70486D3F9007BF209 /* recursiveTreeScreenSaver_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA80370C50100C91783 /* recursiveTreeScreenSaver_Prefix.pch */; };
+		43E65468136372C3004B998D /* Info-Screensaver.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43E65467136372C3004B998D /* Info-Screensaver.plist */; };
+		43E654711363730A004B998D /* schizzo_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 43E654701363730A004B998D /* schizzo_Prefix.pch */; };
+		43E654771363732A004B998D /* cLista.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E654751363732A004B998D /* cLista.cpp */; };
+		43E654781363732A004B998D /* schizzoApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E654761363732A004B998D /* schizzoApp.cpp */; };
+		43E6547C13637336004B998D /* cLista.h in Headers */ = {isa = PBXBuildFile; fileRef = 43E6547913637336004B998D /* cLista.h */; };
+		43E6547D13637336004B998D /* DrawingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = 43E6547A13637336004B998D /* DrawingInstruction.h */; };
+		43E6547E13637336004B998D /* Resources.h in Headers */ = {isa = PBXBuildFile; fileRef = 43E6547B13637336004B998D /* Resources.h */; };
 		8D255ACA0486D3F9007BF209 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		8D255ACE0486D3F9007BF209 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		8D255ACF0486D3F9007BF209 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		00880A3611630C7F00F731D1 /* recursiveTreeScreenSaverApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = recursiveTreeScreenSaverApp.cpp; path = ../src/recursiveTreeScreenSaverApp.cpp; sourceTree = SOURCE_ROOT; };
 		00880A3F11630CB400F731D1 /* AppScreenSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppScreenSaver.h; path = ../../../cinder_0.8.2_mac/include/cinder/app/AppScreenSaver.h; sourceTree = SOURCE_ROOT; };
 		00880A4011630CB400F731D1 /* AppImplCocoaScreenSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppImplCocoaScreenSaver.h; path = ../../../cinder_0.8.2_mac/include/cinder/app/AppImplCocoaScreenSaver.h; sourceTree = SOURCE_ROOT; };
 		00880A4611630CDA00F731D1 /* AppImplCocoaScreenSaver.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppImplCocoaScreenSaver.mm; path = ../../../cinder_0.8.2_mac/src/cinder/app/AppImplCocoaScreenSaver.mm; sourceTree = SOURCE_ROOT; };
@@ -50,20 +50,21 @@
 		00880A5D11630D7900F731D1 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		00C9A19011679DFE0086E7FD /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		00C9A19E11679F0E0086E7FD /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
-		00C9A1D21167C7810086E7FD /* AppImplCocoaRendererGl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppImplCocoaRendererGl.mm; path = ../../../cinder_0.8.2_mac/src/cinder/app/AppImplCocoaRendererGl.mm; sourceTree = SOURCE_ROOT; };
-		00C9A1D31167C7810086E7FD /* AppImplCocoaRendererQuartz.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppImplCocoaRendererQuartz.mm; path = ../../../cinder_0.8.2_mac/src/cinder/app/AppImplCocoaRendererQuartz.mm; sourceTree = SOURCE_ROOT; };
-		00C9A1D51167C7810086E7FD /* CinderView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CinderView.mm; path = ../../../cinder_0.8.2_mac/src/cinder/app/CinderView.mm; sourceTree = SOURCE_ROOT; };
 		00C9A1DA1167C7B50086E7FD /* AppImplCocoaRendererGl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppImplCocoaRendererGl.h; path = ../../../cinder_0.8.2_mac/include/cinder/app/AppImplCocoaRendererGl.h; sourceTree = SOURCE_ROOT; };
-		00C9A1DB1167C7B50086E7FD /* AppImplCocoaRendererQuartz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppImplCocoaRendererQuartz.h; path = ../../../cinder_0.8.2_mac/include/cinder/app/AppImplCocoaRendererQuartz.h; sourceTree = SOURCE_ROOT; };
 		00C9A1DC1167C7B50086E7FD /* CinderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CinderView.h; path = ../../../cinder_0.8.2_mac/include/cinder/app/CinderView.h; sourceTree = SOURCE_ROOT; };
 		06F27B2DFFEEEFEF11CA0E56 /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = /System/Library/Frameworks/ScreenSaver.framework; sourceTree = "<absolute>"; };
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		32DBCFA80370C50100C91783 /* recursiveTreeScreenSaver_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = recursiveTreeScreenSaver_Prefix.pch; sourceTree = "<group>"; };
-		8D255AD20486D3F9007BF209 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D255AD30486D3F9007BF209 /* recursiveTreeScreenSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = recursiveTreeScreenSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		43E65467136372C3004B998D /* Info-Screensaver.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Screensaver.plist"; sourceTree = "<group>"; };
+		43E654701363730A004B998D /* schizzo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = schizzo_Prefix.pch; sourceTree = "<group>"; };
+		43E654751363732A004B998D /* cLista.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cLista.cpp; path = ../src/cLista.cpp; sourceTree = SOURCE_ROOT; };
+		43E654761363732A004B998D /* schizzoApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = schizzoApp.cpp; path = ../src/schizzoApp.cpp; sourceTree = SOURCE_ROOT; };
+		43E6547913637336004B998D /* cLista.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cLista.h; path = ../include/cLista.h; sourceTree = SOURCE_ROOT; };
+		43E6547A13637336004B998D /* DrawingInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingInstruction.h; path = ../include/DrawingInstruction.h; sourceTree = SOURCE_ROOT; };
+		43E6547B13637336004B998D /* Resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = SOURCE_ROOT; };
+		8D255AD30486D3F9007BF209 /* schizzoScreenSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = schizzoScreenSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +93,9 @@
 		00880A3C11630CA300F731D1 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				43E6547913637336004B998D /* cLista.h */,
+				43E6547A13637336004B998D /* DrawingInstruction.h */,
+				43E6547B13637336004B998D /* Resources.h */,
 				00880A3D11630CB400F731D1 /* cinder */,
 			);
 			name = Headers;
@@ -109,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				00C9A1DA1167C7B50086E7FD /* AppImplCocoaRendererGl.h */,
-				00C9A1DB1167C7B50086E7FD /* AppImplCocoaRendererQuartz.h */,
 				00C9A1DC1167C7B50086E7FD /* CinderView.h */,
 				00880A3F11630CB400F731D1 /* AppScreenSaver.h */,
 				00880A4011630CB400F731D1 /* AppImplCocoaScreenSaver.h */,
@@ -128,16 +131,13 @@
 		00880A4511630CDA00F731D1 /* app */ = {
 			isa = PBXGroup;
 			children = (
-				00C9A1D21167C7810086E7FD /* AppImplCocoaRendererGl.mm */,
-				00C9A1D31167C7810086E7FD /* AppImplCocoaRendererQuartz.mm */,
-				00C9A1D51167C7810086E7FD /* CinderView.mm */,
 				00880A4611630CDA00F731D1 /* AppImplCocoaScreenSaver.mm */,
 				00880A4711630CDA00F731D1 /* AppScreenSaver.cpp */,
 			);
 			name = app;
 			sourceTree = SOURCE_ROOT;
 		};
-		089C166AFE841209C02AAC07 /* recursiveTreeScreenSaver */ = {
+		089C166AFE841209C02AAC07 /* schizzoScreenSaver */ = {
 			isa = PBXGroup;
 			children = (
 				00880A3C11630CA300F731D1 /* Headers */,
@@ -147,7 +147,7 @@
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
 			);
-			name = recursiveTreeScreenSaver;
+			name = schizzoScreenSaver;
 			sourceTree = "<group>";
 		};
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
@@ -162,7 +162,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8D255AD20486D3F9007BF209 /* Info.plist */,
+				43E65467136372C3004B998D /* Info-Screensaver.plist */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
 			);
 			name = Resources;
@@ -171,7 +171,8 @@
 		08FB77AFFE84173DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				00880A3611630C7F00F731D1 /* recursiveTreeScreenSaverApp.cpp */,
+				43E654751363732A004B998D /* cLista.cpp */,
+				43E654761363732A004B998D /* schizzoApp.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -207,7 +208,7 @@
 		19C28FB8FE9D52D311CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D255AD30486D3F9007BF209 /* recursiveTreeScreenSaver.saver */,
+				8D255AD30486D3F9007BF209 /* schizzoScreenSaver.saver */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,7 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				00880A4411630CDA00F731D1 /* cinder */,
-				32DBCFA80370C50100C91783 /* recursiveTreeScreenSaver_Prefix.pch */,
+				43E654701363730A004B998D /* schizzo_Prefix.pch */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -228,21 +229,23 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D255AC70486D3F9007BF209 /* recursiveTreeScreenSaver_Prefix.pch in Headers */,
 				00880A4111630CB400F731D1 /* AppScreenSaver.h in Headers */,
 				00880A4211630CB400F731D1 /* AppImplCocoaScreenSaver.h in Headers */,
 				00C9A1DD1167C7B50086E7FD /* AppImplCocoaRendererGl.h in Headers */,
-				00C9A1DE1167C7B50086E7FD /* AppImplCocoaRendererQuartz.h in Headers */,
 				00C9A1DF1167C7B50086E7FD /* CinderView.h in Headers */,
+				43E654711363730A004B998D /* schizzo_Prefix.pch in Headers */,
+				43E6547C13637336004B998D /* cLista.h in Headers */,
+				43E6547D13637336004B998D /* DrawingInstruction.h in Headers */,
+				43E6547E13637336004B998D /* Resources.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8D255AC50486D3F9007BF209 /* recursiveTreeScreenSaver */ = {
+		8D255AC50486D3F9007BF209 /* schizzoScreenSaver */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EF7AD72D08BB986600CE4634 /* Build configuration list for PBXNativeTarget "recursiveTreeScreenSaver" */;
+			buildConfigurationList = EF7AD72D08BB986600CE4634 /* Build configuration list for PBXNativeTarget "schizzoScreenSaver" */;
 			buildPhases = (
 				8D255AC60486D3F9007BF209 /* Headers */,
 				8D255AC90486D3F9007BF209 /* Resources */,
@@ -254,10 +257,10 @@
 			);
 			dependencies = (
 			);
-			name = recursiveTreeScreenSaver;
+			name = schizzoScreenSaver;
 			productInstallPath = "$(HOME)/Library/Screen Savers";
-			productName = recursiveTreeScreenSaver;
-			productReference = 8D255AD30486D3F9007BF209 /* recursiveTreeScreenSaver.saver */;
+			productName = schizzoScreenSaver;
+			productReference = 8D255AD30486D3F9007BF209 /* schizzoScreenSaver.saver */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -265,7 +268,7 @@
 /* Begin PBXProject section */
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = EF7AD73108BB986600CE4634 /* Build configuration list for PBXProject "recursiveTreeScreenSaver" */;
+			buildConfigurationList = EF7AD73108BB986600CE4634 /* Build configuration list for PBXProject "schizzoScreenSaver" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -275,11 +278,11 @@
 				French,
 				German,
 			);
-			mainGroup = 089C166AFE841209C02AAC07 /* recursiveTreeScreenSaver */;
+			mainGroup = 089C166AFE841209C02AAC07 /* schizzoScreenSaver */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D255AC50486D3F9007BF209 /* recursiveTreeScreenSaver */,
+				8D255AC50486D3F9007BF209 /* schizzoScreenSaver */,
 			);
 		};
 /* End PBXProject section */
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D255ACA0486D3F9007BF209 /* InfoPlist.strings in Resources */,
+				43E65468136372C3004B998D /* Info-Screensaver.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,12 +314,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00880A3711630C7F00F731D1 /* recursiveTreeScreenSaverApp.cpp in Sources */,
 				00880A4811630CDA00F731D1 /* AppImplCocoaScreenSaver.mm in Sources */,
 				00880A4911630CDA00F731D1 /* AppScreenSaver.cpp in Sources */,
-				00C9A1D61167C7810086E7FD /* AppImplCocoaRendererGl.mm in Sources */,
-				00C9A1D71167C7810086E7FD /* AppImplCocoaRendererQuartz.mm in Sources */,
-				00C9A1D91167C7810086E7FD /* CinderView.mm in Sources */,
+				43E654771363732A004B998D /* cLista.cpp in Sources */,
+				43E654781363732A004B998D /* schizzoApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,8 +351,9 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = recursiveTreeScreenSaver_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
+				GCC_PREFIX_HEADER = schizzo_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "SCH_IS_SCREENSAVER=1";
+				INFOPLIST_FILE = "Info-Screensaver.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = YES;
@@ -358,7 +361,7 @@
 					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
 					"-lcurl",
 				);
-				PRODUCT_NAME = recursiveTreeScreenSaver;
+				PRODUCT_NAME = schizzoScreenSaver;
 				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = saver;
 			};
@@ -378,7 +381,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = recursiveTreeScreenSaver_Prefix.pch;
+				GCC_PREFIX_HEADER = schizzoScreenSaver_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
@@ -387,7 +390,7 @@
 					"\"$(CINDER_PATH)/lib/libcinder.a\"",
 					"-lcurl",
 				);
-				PRODUCT_NAME = recursiveTreeScreenSaver;
+				PRODUCT_NAME = schizzoScreenSaver;
 				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = saver;
 			};
@@ -404,7 +407,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include";
@@ -431,7 +434,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EF7AD72D08BB986600CE4634 /* Build configuration list for PBXNativeTarget "recursiveTreeScreenSaver" */ = {
+		EF7AD72D08BB986600CE4634 /* Build configuration list for PBXNativeTarget "schizzoScreenSaver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EF7AD72E08BB986600CE4634 /* Debug */,
@@ -440,7 +443,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EF7AD73108BB986600CE4634 /* Build configuration list for PBXProject "recursiveTreeScreenSaver" */ = {
+		EF7AD73108BB986600CE4634 /* Build configuration list for PBXProject "schizzoScreenSaver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EF7AD73208BB986600CE4634 /* Debug */,

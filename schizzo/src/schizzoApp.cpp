@@ -5,12 +5,20 @@
 #include "cinder/Rand.h"
 #include "cinder/gl/Fbo.h"
 
+#ifdef SCH_IS_SCREENSAVER
+#include "cinder/app/AppScreenSaver.h"
+#endif
+
 #define DE 3
 using namespace ci;
 using namespace ci::app;
 using namespace std;
 
+#ifdef SCH_IS_SCREENSAVER
+class schizzoApp : public AppScreenSaver {
+#else
 class schizzoApp : public AppBasic {
+#endif
   public:
     void prepareSettings( Settings *settings );
 	void setup();
@@ -18,6 +26,7 @@ class schizzoApp : public AppBasic {
 	void update();
 	void draw();
 	void city();
+    void resize( ResizeEvent event );
 
 	CLista instructions;
     int el0;
@@ -39,22 +48,37 @@ class schizzoApp : public AppBasic {
 
 void schizzoApp::prepareSettings( Settings *settings )
 {
+#ifdef SCH_IS_SCREENSAVER
+  //settings->setSingleDisplayScreen(1);
+#else
   settings->setWindowSize( 800, 400 );
   // settings->setFrameRate(setFrameRate 60.0f );
   // settings->setFullScreen( false );
+#endif
 }
 
 void schizzoApp::setup()
 {
   gl::Fbo::Format msaaFormat;
-  msaaFormat.setSamples( 4 );
+  msaaFormat.setSamples( 8 );
   myFbo = gl::Fbo( 800, 400, msaaFormat );
+
+  glEnable( GL_POINT_SMOOTH );
+  glHint( GL_POINT_SMOOTH_HINT, GL_NICEST );
+  glEnable(GL_LINE_SMOOTH);
+  glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
+  // glEnable( GL_MULTISAMPLE_ARB );
 
   el0 = 0;
   pen = Vec2f( 0, 0 );
   hasSetup = false;
 }
 
+void schizzoApp::resize( ResizeEvent event )
+{
+  printf("resize\n");
+  hasSetup = false;
+}
 
 void schizzoApp::renderSceneToFbo() 
 {
@@ -64,9 +88,9 @@ void schizzoApp::renderSceneToFbo()
   gl::setViewport( myFbo.getBounds() );
   gl::setMatricesWindow( myFbo.getSize() );
 
-  gl::color( ColorA( 0.0f, 0.0f, 0.0f, 0.7f ) ); 
+  gl::color( ColorA( 0.00f, 0.00f, 0.00f, 0.5f ) ); 
 
-  glLineWidth( 0.4 * 3 );
+  glLineWidth( 1.0 );
 
   int t=0;
   int atATime = 3; // how many to draw per draw() (def 5)
@@ -80,22 +104,12 @@ void schizzoApp::renderSceneToFbo()
 
 void schizzoApp::draw()
 {
-  // clear the window to gray
-  // gl::clear( Color( 0.35f, 0.35f, 0.35f ) );
-
   renderSceneToFbo(); 
   gl::setViewport( getWindowBounds() );
   gl::setMatricesWindow( getWindowWidth(), getWindowHeight(), false );
-  gl::color( Color( 1, 1, 1 ) ) ;
+
+  gl::color( Color( 1, 1, 1 ) ) ; // otherwise the color hangs over
   gl::draw( myFbo.getTexture() );
-
-  // use the scene we rendered into the FBO as a texture
-  // glEnable( GL_TEXTURE_2D );
-  // myFbo.bindTexture();
-  // gl::draw(myFbo.getTexture());
-  // gl::draw( myFbo.getTexture(), getWindowBounds() );
-  // gl::draw( myFbo.getTexture(), getWindowBounds() );
-
 }
 
 void schizzoApp::mouseDown( MouseEvent event )
@@ -106,6 +120,7 @@ void schizzoApp::mouseDown( MouseEvent event )
 void schizzoApp::update()
 {
   if(!hasSetup) {
+    gl::clear( Color( 1.0, 1.0, 1.0 ) );
     myFbo.bindFramebuffer();
     gl::clear( Color( 1.0, 1.0, 1.0 ) );
     myFbo.unbindFramebuffer();
@@ -366,4 +381,8 @@ void schizzoApp::retth(int sx, int sy, int ex, int ey) {
   }
 }
 
+#ifdef SCH_IS_SCREENSAVER
+CINDER_APP_SCREENSAVER( schizzoApp, RendererGl )
+#else
 CINDER_APP_BASIC( schizzoApp, RendererGl )
+#endif
