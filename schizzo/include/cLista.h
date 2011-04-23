@@ -8,6 +8,7 @@
 class CLista {
  public:
     CLista();
+    void add( int type, int x, int y);
     void add( int type, ci::Vec2f loc );
     void add( di_t instruction );
     ci::Vec2f draw(ci::Vec2f, int frame);

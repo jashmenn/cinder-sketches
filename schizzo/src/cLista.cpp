@@ -21,9 +21,14 @@ void CLista::add(int type, Vec2f loc)
   int d = 3;  
   float rnd1 = Rand::randFloat(-d,d); 
   float rnd2 = Rand::randFloat(-d,d); 
-  Vec2f randomized = Vec2f( loc.x+rnd1, loc.x+rnd2 );
+  Vec2f randomized = Vec2f( loc.x+rnd1, loc.y+rnd2 );
   di_t di = DIMake(type, randomized);
   add(di);
+}
+
+void CLista::add(int type, int x, int y)
+{
+  add(type, Vec2f(x, y));
 }
 
 Vec2f CLista::draw(Vec2f pen, int frame)
