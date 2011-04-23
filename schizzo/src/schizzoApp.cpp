@@ -3,6 +3,7 @@
 #include "DrawingInstruction.h"
 #include "cLista.h"
 #include "cinder/Rand.h"
+#include "cinder/gl/Fbo.h"
 
 #define DE 3
 using namespace ci;
@@ -22,6 +23,7 @@ class schizzoApp : public AppBasic {
     int el0;
     Vec2f pen;
     bool hasSetup;
+    gl::Fbo myFbo;
 
   protected:
      void retth(int sx, int sy, int ex, int ey);
@@ -31,6 +33,8 @@ class schizzoApp : public AppBasic {
      void rett(int sx, int sy, int ex, int ey);
      void dlinea(int sx, int sy, int ex, int ey);
      void linea(int sx, int sy, int ex, int ey);
+
+     void renderSceneToFbo();
 };
 
 void schizzoApp::prepareSettings( Settings *settings )
@@ -42,25 +46,76 @@ void schizzoApp::prepareSettings( Settings *settings )
 
 void schizzoApp::setup()
 {
-  gl::enableAlphaBlending();
-  glEnable(GL_LINE_SMOOTH);
+  gl::Fbo::Format msaaFormat;
+  msaaFormat.setSamples( 4 );
+  myFbo = gl::Fbo( 800, 400, msaaFormat );
 
-  gl::color( ColorA( 0.0f, 0.0f, 0.0f, 0.7f ) ); 
-  glLineWidth( 0.4 * 3 );
+  myFbo.bindFramebuffer();
+  gl::clear( Color( 1.0, 1.0, 1.0 ) );
+  myFbo.unbindFramebuffer();
+
+  // gl::enableDepthRead();
+  // gl::enableDepthWrite();
+        
+  // gl::enableAlphaBlending();
+  // glEnable(GL_LINE_SMOOTH);
+
+  // gl::color( ColorA( 0.0f, 0.0f, 0.0f, 0.7f ) ); 
+  // glLineWidth( 0.4 * 3 );
 
   el0 = 0;
   pen = Vec2f( 0, 0 );
   hasSetup = false;
 }
 
-void schizzoApp::draw()
+
+void schizzoApp::renderSceneToFbo() 
 {
+  gl::SaveFramebufferBinding bindingSaver;
+  myFbo.bindFramebuffer();
+
+  gl::setViewport( myFbo.getBounds() );
+  gl::setMatricesWindow( myFbo.getSize(), false );
+  // gl::setMatricesWindow( myFbo.getSize(), false );
+  // gl::setMatricesWindow( myFbo.getWidth(), myFbo.getHeight(), true );
+  // gl::setMatricesWindow( myFbo.getWidth(), myFbo.getHeight(), true );
+
+  // gl::clear( Color( 0.5, 0.5, 0.5 ) );
+  // gl::color(Color(1.0f, 0.5f, 0.3f));
+  gl::color( ColorA( 0.0f, 0.0f, 0.0f, 0.7f ) ); 
+  // gl::drawLine(Vec2f(20.0f, 20.0f), Vec2f(230.0f, 334.0f));
+
+  // gl::color( ColorA( 0.0f, 0.0f, 0.0f, 0.7f ) ); 
+  glLineWidth( 0.4 * 3 );
+
   int t=0;
   int atATime = 3; // how many to draw per draw() (def 5)
   while((t++ < atATime) && (el0 < instructions.size())) {
     pen = instructions.draw(pen, el0);
     el0++;
   }
+  // myFbo.unbindFramebuffer();
+}
+
+
+void schizzoApp::draw()
+{
+  // clear the window to gray
+  // gl::clear( Color( 0.35f, 0.35f, 0.35f ) );
+
+  renderSceneToFbo(); 
+  gl::setViewport( getWindowBounds() );
+  // gl::setMatricesWindow( getWindowWidth(), getWindowHeight(), true );
+  gl::color( Color( 1, 1, 1 ) ) ;
+  gl::draw( myFbo.getTexture() );
+
+  // use the scene we rendered into the FBO as a texture
+  // glEnable( GL_TEXTURE_2D );
+  // myFbo.bindTexture();
+  // gl::draw(myFbo.getTexture());
+  // gl::draw( myFbo.getTexture(), getWindowBounds() );
+  // gl::draw( myFbo.getTexture(), getWindowBounds() );
+
 }
 
 void schizzoApp::mouseDown( MouseEvent event )
