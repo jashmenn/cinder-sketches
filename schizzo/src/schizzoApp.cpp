@@ -72,24 +72,18 @@ void schizzoApp::update()
 {
   if(!hasSetup) {
     gl::clear( Color( 1.0, 1.0, 1.0) );
-    // gl::translate( Vec2f(0, getWindowHeight()) );
-    // gl::drawLine( Vec2f(0, 0), Vec2f(getWindowWidth(), getWindowHeight()) );
-    // gl::drawLine( Vec2f(0, getWindowHeight() - 50), 
-    //               Vec2f(getWindowWidth(), getWindowHeight() - 50) );
     hasSetup = true;
     city();
   }
-
-
 }
 
 void schizzoApp::city() 
 {
   int by = getWindowHeight() - 50;
-  // retth(0, by, getWindowWidth(), getWindowHeight());
-  // rettf(0, by, getWindowWidth(), getWindowHeight());
+  retth(0, by, getWindowWidth(), getWindowHeight());
+  rettf(0, by, getWindowWidth(), getWindowHeight());
 
-  // Technical areas 
+  // Back row // fila dietro
   int px0 = 0;
   while (px0 < 0.95*getWindowWidth()) {
     int dey = int(Rand::randInt(80, 300));
@@ -98,6 +92,32 @@ void schizzoApp::city()
     building(px0, by - dey, px0 + dex, by);
     px0 = px0 + dex + int(Rand::randInt(-5, 20));
   }
+
+  // Front row // fila davanti
+  px0 = 0;
+  while (px0 < getWindowWidth()) {
+    int dey = int(Rand::randInt(50, 100));
+    int dex = int(Rand::randInt(15000, 30000) / (80 + dey));
+    if (px0 + dex > getWindowWidth()) dex = getWindowWidth() - px0;
+    building(px0, by - dey, px0 + dex, by);
+    px0 = px0 + dex + int(Rand::randInt(-5, 20));
+  }
+
+  // And other vegetation // vegetazione e altro
+  for(int i=0; i<30; i++) {
+    int px = int(Rand::randInt(getWindowWidth()));
+    int py = by - int(Rand::randInt(10, 20));
+    linea(px, py, px, by);
+    linea(px, py, px + int(Rand::randInt(-10, 10)), py);
+  }
+
+  for(int i=0; i<30; i++) {
+    int px = int(Rand::randInt(getWindowWidth()));
+    int py = by - int(Rand::randInt(5, 20));
+    linea(px, py, px, by);
+    rett(px-5, py - 10, px + 5, py);
+  }
+
 }
 
 void schizzoApp::building(int sx, int sy, int ex, int ey) {
@@ -142,20 +162,19 @@ void schizzoApp::building(int sx, int sy, int ex, int ey) {
    
   rett(sx, sy, ex, ey);
    
-  /*
-  if ((Rand::randInt(1.5) > 1) && (dex > 80)) {
-    if (Rand::randInt(2) > 1) { // dome // cupola
+  if ((Rand::randInt(10) > 6) && (dex > 80)) {
+    if (Rand::randInt(10) > 5) { // dome // cupola
       int ox = 10;
       int cx = (sx + ex) / 2;
       int cy = sy + (cx - sx - ox);
       float rad = (cx - sx - ox) * 1.414;
-      for (float beta=0; beta<=PI/2.0; beta+=PI/16.0) {
+      for (float beta=0; beta<=M_PI/2.0; beta+=M_PI/16.0) {
         instructions.add(0, sx + ox, sy);
-        for (float alfa=PI/4.0; alfa<=PI*3.0/4.0; alfa+=PI/16.0) {
+        for (float alfa=M_PI/4.0; alfa<=M_PI*3.0/4.0; alfa+=M_PI/16.0) {
           instructions.add(1, cx - int(rad * cos(alfa) * cos(beta)), cy - int(rad * sin(alfa)));
         } 
       }
-      for (float alfa=PI/4.0; alfa<PI/2.0; alfa+=PI/32.0) {
+      for (float alfa=M_PI/4.0; alfa<M_PI/2.0; alfa+=M_PI/32.0) {
         linea(cx - int(rad * cos(alfa)), cy - int(rad * sin(alfa)), cx + int(rad * cos(alfa)), cy - int(rad * sin(alfa)));
       } 
     }
@@ -171,7 +190,6 @@ void schizzoApp::building(int sx, int sy, int ex, int ey) {
       }     
     }
   }
-  */
  
   // Base // basamento
   int ba = 0;
