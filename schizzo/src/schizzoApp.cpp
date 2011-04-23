@@ -50,19 +50,6 @@ void schizzoApp::setup()
   msaaFormat.setSamples( 4 );
   myFbo = gl::Fbo( 800, 400, msaaFormat );
 
-  myFbo.bindFramebuffer();
-  gl::clear( Color( 1.0, 1.0, 1.0 ) );
-  myFbo.unbindFramebuffer();
-
-  // gl::enableDepthRead();
-  // gl::enableDepthWrite();
-        
-  // gl::enableAlphaBlending();
-  // glEnable(GL_LINE_SMOOTH);
-
-  // gl::color( ColorA( 0.0f, 0.0f, 0.0f, 0.7f ) ); 
-  // glLineWidth( 0.4 * 3 );
-
   el0 = 0;
   pen = Vec2f( 0, 0 );
   hasSetup = false;
@@ -75,17 +62,10 @@ void schizzoApp::renderSceneToFbo()
   myFbo.bindFramebuffer();
 
   gl::setViewport( myFbo.getBounds() );
-  gl::setMatricesWindow( myFbo.getSize(), false );
-  // gl::setMatricesWindow( myFbo.getSize(), false );
-  // gl::setMatricesWindow( myFbo.getWidth(), myFbo.getHeight(), true );
-  // gl::setMatricesWindow( myFbo.getWidth(), myFbo.getHeight(), true );
+  gl::setMatricesWindow( myFbo.getSize() );
 
-  // gl::clear( Color( 0.5, 0.5, 0.5 ) );
-  // gl::color(Color(1.0f, 0.5f, 0.3f));
   gl::color( ColorA( 0.0f, 0.0f, 0.0f, 0.7f ) ); 
-  // gl::drawLine(Vec2f(20.0f, 20.0f), Vec2f(230.0f, 334.0f));
 
-  // gl::color( ColorA( 0.0f, 0.0f, 0.0f, 0.7f ) ); 
   glLineWidth( 0.4 * 3 );
 
   int t=0;
@@ -105,7 +85,7 @@ void schizzoApp::draw()
 
   renderSceneToFbo(); 
   gl::setViewport( getWindowBounds() );
-  // gl::setMatricesWindow( getWindowWidth(), getWindowHeight(), true );
+  gl::setMatricesWindow( getWindowWidth(), getWindowHeight(), false );
   gl::color( Color( 1, 1, 1 ) ) ;
   gl::draw( myFbo.getTexture() );
 
@@ -126,7 +106,9 @@ void schizzoApp::mouseDown( MouseEvent event )
 void schizzoApp::update()
 {
   if(!hasSetup) {
-    gl::clear( Color( 1.0, 1.0, 1.0) );
+    myFbo.bindFramebuffer();
+    gl::clear( Color( 1.0, 1.0, 1.0 ) );
+    myFbo.unbindFramebuffer();
     hasSetup = true;
     city();
   }
