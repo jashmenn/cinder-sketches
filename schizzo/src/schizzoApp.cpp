@@ -34,6 +34,9 @@ class schizzoApp : public AppBasic {
     bool hasSetup;
     gl::Fbo myFbo;
 
+    double        mTime;
+	double        mLastDraw;
+
   protected:
      void retth(int sx, int sy, int ex, int ey);
      void rettv(int sx, int sy, int ex, int ey);
@@ -73,11 +76,12 @@ void schizzoApp::setup()
   glHint( GL_POINT_SMOOTH_HINT, GL_NICEST );
   glEnable(GL_LINE_SMOOTH);
   glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
-  // glEnable( GL_MULTISAMPLE_ARB );
 
   el0 = 0;
   pen = Vec2f( 0, 0 );
   hasSetup = false;
+  mTime = getElapsedSeconds();
+  mLastDraw = mTime;
 }
 
 void schizzoApp::resize( ResizeEvent event )
@@ -134,6 +138,17 @@ void schizzoApp::update()
     hasSetup = true;
     city();
   }
+
+  mTime = getElapsedSeconds();
+  int t = 30;
+#ifdef SCH_IS_SCREENSAVER
+  if(((((int)round(mTime)) % t) == 0) && 
+      (mTime - mLastDraw > t)) {
+     hasSetup = false;
+     mLastDraw = mTime;
+  }
+#endif
+
 }
 
 void schizzoApp::city() 
