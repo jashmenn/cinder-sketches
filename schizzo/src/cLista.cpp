@@ -43,8 +43,9 @@ Vec2f CLista::draw(Vec2f pen, int frame)
       pen = i.loc;
       break;
     case DI_RECT_TO:
-      gl::color( ColorA( 0.0f, 0.0f, 0.0f, 1.0f ) ); 
+      gl::color( ColorA( 1.0f, 1.0f, 1.0f, 1.0f ) ); 
       gl::drawSolidRect( Rectf( pen, i.loc ) );
+      gl::color( ColorA( 0.0f, 0.0f, 0.0f, 0.8f ) ); 
       break;
   }
   return pen;

@@ -28,7 +28,9 @@ class schizzoApp : public AppBasic {
      void rettv(int sx, int sy, int ex, int ey);
      void rettf(int sx, int sy, int ex, int ey);
      void building(int sx, int sy, int ex, int ey);
-
+     void rett(int sx, int sy, int ex, int ey);
+     void dlinea(int sx, int sy, int ex, int ey);
+     void linea(int sx, int sy, int ex, int ey);
 };
 
 void schizzoApp::prepareSettings( Settings *settings )
@@ -84,56 +86,55 @@ void schizzoApp::update()
 void schizzoApp::city() 
 {
   int by = getWindowHeight() - 50;
-  retth(0, by, getWindowWidth(), getWindowHeight());
-  rettf(0, by, getWindowWidth(), getWindowHeight());
+  // retth(0, by, getWindowWidth(), getWindowHeight());
+  // rettf(0, by, getWindowWidth(), getWindowHeight());
 
   // Technical areas 
   int px0 = 0;
-  // while (px0 < 0.95*width) {
+  while (px0 < 0.95*getWindowWidth()) {
     int dey = int(Rand::randInt(80, 300));
     int dex = int(Rand::randInt(15000, 30000) / (80 + dey));
-    // if (px0 + dex > 0.95*width) dex = width - px0;
+    if (px0 + dex > 0.95*getWindowWidth()) dex = getWindowWidth() - px0;
     building(px0, by - dey, px0 + dex, by);
-    // px0 = px0 + dex + int(Rand::randInt(-5, 20));
-  // }
- 
+    px0 = px0 + dex + int(Rand::randInt(-5, 20));
+  }
 }
 
 void schizzoApp::building(int sx, int sy, int ex, int ey) {
   int dex = ex - sx;
   int dey = ey - sy;
    
-  /*
   // Technical areas // vani tecnici
-  int [] h = new int [2];
-  h[0] = int(random(5, 20));
-  h[1] = int(random(5, 20));
-  sy = sy + max(h[0], h[1]);
+  int h [2];
+  h[0] = int(Rand::randInt(5, 20));
+  h[1] = int(Rand::randInt(5, 20));
+  sy = sy + fmax(h[0], h[1]);
   for (int i=0; i<2; i++) {
-    if (random(2) > 1) {
-      int dex1 = int(random(10, dex-10));
-      int dex2 = int(random(10, dex-10));
-      lista.agg(0, sx + dex1, sy - h[i]);
-      lista.agg(2, ex - dex2, sy);
+    if (Rand::randInt(4) > 1) {
+      int dex1 = int(Rand::randInt(10, dex-10));
+      int dex2 = int(Rand::randInt(10, dex-10));
+      instructions.add(0, sx + dex1, sy - h[i]);
+      instructions.add(2, ex - dex2, sy);
+      printf("rett %d %d %d %d\n", sx + dex1, sy - h[i], ex - dex2, sy);
       rett(sx + dex1, sy - h[i], ex - dex2, sy);
     }
   }
    
   // antenne
-  if ((random(2) > 0) && (dey > 200)) {
+  if ((Rand::randInt(4) > 0) && (dey > 200)) {
     for(int i=0; i<2; i++) {
-      int px = sx + int(random(10, dex - 10));
-      dlinea(px, sy - int(random(10, 50)), px, sy);
+      int px = sx + int(Rand::randInt(10, dex - 10));
+      dlinea(px, sy - int(Rand::randInt(10, 50)), px, sy);
     }
   }
    
-  // fondo
-  lista.agg(0, sx, sy);
-  lista.agg(2, ex, ey);
+  // end // fondo
+  instructions.add(0, sx, sy);
+  instructions.add(2, ex, ey);
    
-  // ombra a dx
-  if (random(2) > 1) {
-    int om = int(random(10, 30));
+  // Shadow on the right // ombra a dx
+  if (Rand::randInt(4) > 1) {
+    int om = int(Rand::randInt(10, 30));
     dlinea(ex, sy, ex, ey);
     rettf(ex-om, sy, ex, ey);
     ex = ex - om;
@@ -141,23 +142,24 @@ void schizzoApp::building(int sx, int sy, int ex, int ey) {
    
   rett(sx, sy, ex, ey);
    
-  if ((random(1.5) > 1) && (dex > 80)) {
-    if (random(2) > 1) { // cupola
+  /*
+  if ((Rand::randInt(1.5) > 1) && (dex > 80)) {
+    if (Rand::randInt(2) > 1) { // dome // cupola
       int ox = 10;
       int cx = (sx + ex) / 2;
       int cy = sy + (cx - sx - ox);
       float rad = (cx - sx - ox) * 1.414;
       for (float beta=0; beta<=PI/2.0; beta+=PI/16.0) {
-        lista.agg(0, sx + ox, sy);
+        instructions.add(0, sx + ox, sy);
         for (float alfa=PI/4.0; alfa<=PI*3.0/4.0; alfa+=PI/16.0) {
-          lista.agg(1, cx - int(rad * cos(alfa) * cos(beta)), cy - int(rad * sin(alfa)));
+          instructions.add(1, cx - int(rad * cos(alfa) * cos(beta)), cy - int(rad * sin(alfa)));
         } 
       }
       for (float alfa=PI/4.0; alfa<PI/2.0; alfa+=PI/32.0) {
         linea(cx - int(rad * cos(alfa)), cy - int(rad * sin(alfa)), cx + int(rad * cos(alfa)), cy - int(rad * sin(alfa)));
       } 
     }
-    else { // piramide
+    else { // pyramid // piramide
       int cdex = (ex - sx) / 2;
       int cdey = cdex / 2;
       linea(sx, sy, sx + cdex, sy - cdey);
@@ -169,17 +171,18 @@ void schizzoApp::building(int sx, int sy, int ex, int ey) {
       }     
     }
   }
+  */
  
-  // basamento
+  // Base // basamento
   int ba = 0;
-  if (random(2) > 1) {
-    ba = int(random(10, 20));
+  if (Rand::randInt(4) > 1) {
+    ba = int(Rand::randInt(10, 20));
     dlinea(sx, ey-ba, ex, ey-ba);
     rettf(sx, ey-ba, ex, ey);
   } 
  
-  // spalle
-  if (random(2) > 1) {
+  // Back // spalle
+  if (Rand::randInt(4) > 1) {
     int sp = 10;
     sx = sx + sp;
     ex = ex - sp;
@@ -188,33 +191,33 @@ void schizzoApp::building(int sx, int sy, int ex, int ey) {
   }
  
   // architrave
-  if (random(2) > 1) {
-    sy = sy + int(random(10, 20));
+  if (Rand::randInt(4) > 1) {
+    sy = sy + int(Rand::randInt(10, 20));
     dlinea(sx, sy, ex, sy);   
   }
  
-  // fascia verticale
-  if (random(1.5) > 1) {
+  // Vertical strip // fascia verticale
+  if (Rand::randInt(10) > 7) {
     int hf = 20;
     int p = (sx + ex) / 2;
     rettv(p-hf, sy, p+hf, ey);
   }
  
-  // basamento bianco
-  if (random(2) > 1) {
-    ey = ey - ba - int(random(10, 20));
+  // White base // basamento bianco
+  if (Rand::randInt(4) > 1) {
+    ey = ey - ba - int(Rand::randInt(10, 20));
     dlinea(sx, ey, ex, ey);   
   }
- 
-  // fascia orizzontale
-  if (random(1.5) > 1) {
+
+  // Horizontal band // fascia orizzontale
+  if (Rand::randInt(10) > 6) {
     int hf = 8;
     int p = (sy + ey) / 2;
     retth(sx, p-hf, ex, p+hf);
   }
    
-  // righe verticali
-  if (random(2) > 1) {
+  // Vertical lines // righe verticali
+  if (Rand::randInt(4) > 1) {
     int sp = 10;
     dex = ex - sx;
     int nr = dex / sp;
@@ -225,8 +228,8 @@ void schizzoApp::building(int sx, int sy, int ex, int ey) {
     }
   }
    
-  // righe orizzontali
-  if (random(2) > 1) {
+  // Horizontal lines // righe orizzontali
+  if (Rand::randInt(4) > 1) {
     int sp = 30;
     dey = ey - sy;
     int nr = dey / sp;
@@ -236,7 +239,6 @@ void schizzoApp::building(int sx, int sy, int ex, int ey) {
       dlinea(sx, j, ex, j);
     }
   }
-  */
  
 }
  
@@ -270,6 +272,25 @@ void schizzoApp::rettf(int sx, int sy, int ex, int ey) {
   }
 }
 
+// ------------------------------------------------------------
+// Empty rectangle // rettangolo vuoto
+void schizzoApp::rett(int sx, int sy, int ex, int ey) {
+  dlinea(sx, sy, ex, sy);
+  dlinea(sx, ey, ex, ey);
+  dlinea(sx, sy, sx, ey);
+  dlinea(ex, sy, ex, ey);
+}
+
+void schizzoApp::dlinea(int sx, int sy, int ex, int ey) {
+  linea(sx, sy, ex, ey);
+  linea(sx, sy, ex, ey);
+}
+
+void schizzoApp::linea(int sx, int sy, int ex, int ey) {
+  instructions.add(0, sx + int(Rand::randInt(-DE, DE)), sy + int(Rand::randInt(-DE, DE)));
+  instructions.add(1, ex + int(Rand::randInt(-DE, DE)), ey + int(Rand::randInt(-DE, DE)));
+}
+ 
 // ------------------------------------------------------------
 // Filled rectangle with vertical lines // rettangolo pieno a righe verticali
 void schizzoApp::rettv(int sx, int sy, int ex, int ey) {
