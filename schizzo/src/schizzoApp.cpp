@@ -51,8 +51,9 @@ class schizzoApp : public AppBasic {
 
 void schizzoApp::prepareSettings( Settings *settings )
 {
-  gl::clear( Color( 1.0, 1.0, 1.0 ) );
 #ifdef SCH_IS_SCREENSAVER
+  gl::clear( Color( 1.0, 1.0, 1.0 ) );
+
   //settings->setSingleDisplayScreen(1);
 #else
   settings->setWindowSize( 800, 400 );
@@ -64,7 +65,7 @@ void schizzoApp::prepareSettings( Settings *settings )
 void schizzoApp::setup()
 {
   gl::Fbo::Format msaaFormat;
-  msaaFormat.setSamples( 8 );
+  msaaFormat.setSamples( 16 );
   myFbo = gl::Fbo( getWindowWidth(), getWindowHeight(), msaaFormat );
 
   gl::clear( Color( 1.0, 1.0, 1.0 ) );
